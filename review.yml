@@ -1,0 +1,87 @@
+aid: police-bank
+name: Police Bank
+review:
+  question: Does Police Bank expose a live, public Consumer Data Right (CDR) Product
+    Reference Data API, and does it run a bank-proprietary developer portal or only the
+    shared Consumer Data Standards contract?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Police Bank is an active Consumer Data Right (CDR) data holder. Its public,
+    unauthenticated Product Reference Data (PRD) API is confirmed LIVE: an HTTP GET to
+    https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products returned HTTP
+    200 with the CDS-required x-v: 3 response header and a JSON body of
+    data.products - 16 products across 5 categories (TRANS_AND_SAVINGS_ACCOUNTS,
+    TERM_DEPOSITS, RESIDENTIAL_MORTGAGES, PERS_LOANS, CRED_AND_CHRG_CARDS). The public
+    base URI (https://public.cdr.prd.policebank.com.au) was discovered authoritatively
+    from the CDR Register Get Data Holder Brands Summary API (brandName "Police Bank",
+    ABN 95087650799).
+
+    Police Bank does NOT operate a bank-proprietary developer portal or an Up-style
+    personal-banking API. Its only public developer-facing surface is the CDR PRD API
+    plus a plain-English open-banking information page at
+    https://www.policebank.com.au/open-banking. A developer-portal host inferred during
+    research (product.api.policebank.com.au) does not resolve (HTTP 000) and was not
+    listed. The bank shares consumer data outbound with ACCC-accredited data recipients
+    and states it is still pursuing ACCC accreditation to receive data as an Accredited
+    Data Recipient (ADR).
+
+    Spec provenance: no Police Bank-proprietary OpenAPI is published. The harvested
+    contract is the shared Data Standards Body (DSB) Consumer Data Standards "CDR
+    Banking API" (OpenAPI 3.0.3, info.version 1.36.0), which the bank's PRD endpoint
+    conforms to - it is the standard, not a bank-specific document.
+  authModel: |
+    The Product Reference Data API is public and unauthenticated by CDR design (no
+    credentials, no OAuth). Consumer-data (authenticated) sharing follows the CDR ecosystem
+    model: OAuth2 / OIDC hybrid flow under the FAPI security profile, brokered through the
+    ACCC CDR Register and the Accredited Data Recipient (ADR) accreditation model - only
+    accredited recipients, not arbitrary developers, can obtain consumer-data access.
+  specProvenance: DSB Consumer Data Standards (shared) - not Police Bank proprietary
+  cdrPrdConfirmed: true
+  cdrRegisterBrandId: 37a16559-cd30-ee11-a83d-000d3a8830d6
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking
+    documented: true
+    note: CDS-compliant. GET /products confirmed HTTP 200 with x-v response header 3.
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+    note: No WebSocket, streaming, or event API is documented; the CDR model is REST-only.
+  endpointsConfirmed:
+  - GET https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
+sources:
+- url: https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary
+  type: APIReference
+  note: CDR Register Get Data Holder Brands Summary - authoritative publicBaseUri
+    (https://public.cdr.prd.policebank.com.au) for brandName "Police Bank", ABN 95087650799.
+    HTTP 200.
+- url: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
+  type: APIReference
+  note: Live PRD endpoint. HTTP 200, x-v 3, JSON data.products with 16 products across
+    5 categories.
+- url: https://www.policebank.com.au/open-banking
+  type: Documentation
+  note: Bank's open-banking / CDR information page. HTTP 200. Describes outbound data
+    sharing, eligible accounts, and pending ADR accreditation.
+- url: https://consumerdatastandardsaustralia.github.io/standards/includes/swagger/cds_banking.json
+  type: OpenAPI
+  note: Source of the harvested spec - DSB Consumer Data Standards CDR Banking API,
+    OpenAPI 3.0.3, version 1.36.0. Shared standard, not bank-proprietary.
+- url: https://www.policebank.com.au/page-sitemap.xml
+  type: Sitemap
+  note: >-
+    Authoritative page inventory (WordPress/Yoast, 145 pages) used to verify common[]
+    link-property pointers. Confirmed present: /open-banking, /privacy-policy,
+    /contact-us, /security, /regulatory-disclosures. NOT present: a general
+    /terms-and-conditions page (only product-specific terms pages exist) and no
+    company LinkedIn (/company/police-bank returned HTTP 404) - both were therefore
+    omitted. Note: policebank.com.au serves an HTTP 200 SPA shell for arbitrary paths,
+    so the sitemap (not raw status codes) was the verification of record.
+actions:
+  openapiPath: openapi/police-bank-cds-banking-products-openapi.yml
+  openapiProvenance: DSB Consumer Data Standards (CDR Banking API 1.36.0) - shared
+    standard the PRD endpoint conforms to; no Police Bank-proprietary spec exists.

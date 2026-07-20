@@ -1,0 +1,64 @@
+aid: police-bank
+url: https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/apis.yml
+name: Police Bank
+kind: company
+description: Police Bank is a mutual, member-owned Australian bank (ABN 95 087 650 799,
+  ACN 087 650 799, AFSL / Australian Credit Licence No. 240018) founded to serve the
+  New South Wales police community and their families and now open to the wider public.
+  As an Authorised Deposit-taking Institution it participates in Australia's Consumer
+  Data Right (Open Banking) regime as an active data holder - it publishes an unauthenticated
+  Product Reference Data (PRD) API conforming to the Consumer Data Standards, and lets
+  members share their banking data with ACCC-accredited data recipients. Police Bank
+  states it is in the process of gaining ACCC accreditation to also receive data as an
+  Accredited Data Recipient.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Australia
+- Mutual Bank
+- Product Reference Data
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: police-bank:police-bank-cds-banking-products-api
+  name: Police Bank CDR Product Reference Data API
+  tags:
+  - Open Banking
+  - CDR
+  - Product Reference Data
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking
+  properties:
+  - url: https://www.policebank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+    type: APIReference
+  - url: openapi/police-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Product Reference Data (PRD) API required of every
+    Australian ADI under the Consumer Data Right. Serves machine-readable product details
+    (rates, fees, features, eligibility) for Police Bank's transaction and savings accounts,
+    term deposits, residential mortgages, personal loans, and credit/charge cards.
+    Confirmed live at https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
+    (HTTP 200, x-v 3, 16 products across 5 categories). Conforms to the DSB Consumer
+    Data Standards Banking API; not a Police Bank-proprietary contract.
+common:
+- type: Website
+  url: https://www.policebank.com.au/
+- type: Documentation
+  url: https://www.policebank.com.au/open-banking
+- type: PrivacyPolicy
+  url: https://www.policebank.com.au/privacy-policy
+- type: Support
+  url: https://www.policebank.com.au/contact-us
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
