@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/police-bank-cds-banking-products-openapi.yml
+docs: https://www.policebank.com.au/open-banking
+# Lifecycle / versioning posture for Police Bank's CDR Product Reference Data API.
+# Version negotiation is per-endpoint via the CDS x-v header, not a single global
+# API version. Product Reference Data has no authentication and is always current.
+versioning:
+  scheme: header-based (CDS x-v / x-min-v)
+  current:
+    listBankingProducts: 3
+    getBankingProductDetail: 7
+  standard_version: DSB Consumer Data Standards Banking API v1.36.0
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+deprecation:
+  policy: >-
+    Endpoint versions are retired per the Consumer Data Standards versioning and
+    obsolescence process (Future Dated Obligations). Old x-v versions return
+    406 Unsupported Version once retired. No Police Bank-proprietary deprecation
+    policy is published.
+  sunset_header: false
+sla:
+  url: null
+  note: CDR data holders are subject to Data Standards performance/availability requirements (NFRs), not a published Police Bank SLA.
+status_page: null
+status_page_note: No public API status/uptime page found for Police Bank.
+deprecated_operations: []

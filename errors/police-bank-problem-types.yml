@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/police-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#error-codes
+# Police Bank's Product Reference Data API returns the Consumer Data Standards
+# (CDS) error envelope (ResponseErrorListV2 / ErrorV2) - NOT RFC 9457
+# application/problem+json. Each error object carries code (a CDS URN), title
+# (stable human summary), detail (occurrence-specific), and an optional meta.
+format: cds-error-list
+envelope:
+  media_type: application/json
+  shape: '{ "errors": [ { "code": "<urn>", "title": "...", "detail": "...", "meta": {} } ] }'
+  schema: ResponseErrorListV2
+problems:
+- status: 400
+  code: urn:au-cds:error:v2:Field/Invalid
+  title: Invalid Field
+  detail: A supplied query/field value failed validation.
+  operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:v2:Field/Missing
+  title: Missing Required Field
+  detail: A required field was not supplied.
+  operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:v2:Header/Missing
+  title: Missing Required Header
+  detail: A mandatory request header (e.g. x-v) was not supplied.
+  operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:v2:Header/InvalidVersion
+  title: Invalid Version
+  detail: The requested x-v/x-min-v header value is not a positive integer.
+  operations: [listBankingProducts, getBankingProductDetail]
+- status: 400
+  code: urn:au-cds:error:v2:Field/InvalidDateTime
+  title: Invalid Date
+  detail: A supplied date/date-time query value (e.g. updated-since) is malformed.
+  operations: [listBankingProducts]
+- status: 400
+  code: urn:au-cds:error:v2:Field/InvalidPageSize
+  title: Invalid Page Size
+  detail: The page-size query parameter is outside the allowed range.
+  operations: [listBankingProducts]
+- status: 404
+  code: urn:au-cds:error:v2:Resource/Unavailable
+  title: Unavailable Resource
+  detail: The requested productId is known but not currently available.
+  operations: [getBankingProductDetail]
+- status: 404
+  code: urn:au-cds:error:v2:Resource/Invalid
+  title: Invalid Resource
+  detail: The supplied productId does not correspond to a valid resource.
+  operations: [getBankingProductDetail]
+- status: 406
+  code: urn:au-cds:error:v2:Header/UnsupportedVersion
+  title: Unsupported Version
+  detail: The requested version (x-v) is not supported by the endpoint.
+  operations: [listBankingProducts, getBankingProductDetail]
+- status: 422
+  code: urn:au-cds:error:v2:Field/InvalidPage
+  title: Invalid Page
+  detail: The requested page is out of range for the result set.
+  operations: [listBankingProducts]

@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/police-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+# Cross-cutting request/response semantics for Police Bank's CDR Product
+# Reference Data API. These are the Consumer Data Standards (CDS) conventions,
+# not Police Bank-proprietary - the API conforms to the DSB CDS Banking API.
+authentication:
+  style: none (public unauthenticated PRD)
+  see: authentication/police-bank-authentication.yml
+versioning:
+  style: header-based
+  request_headers:
+    x-v: Mandatory. Requested version of the endpoint (positive integer).
+    x-min-v: Optional. Minimum acceptable version; server serves highest supported in [x-min-v, x-v].
+  response_headers:
+    x-v: The version of the endpoint actually served.
+  observed:
+    listBankingProducts: x-v 3 (live)
+    getBankingProductDetail: x-v 7
+  errors: [Header/Missing, Header/InvalidVersion, Header/UnsupportedVersion]
+pagination:
+  style: page-number
+  request_params:
+    page: 1-based page number (default 1).
+    page-size: records per page (default 25, max 1000).
+  response_links: # LinksPaginated
+    self: Fully qualified link to the current response document.
+    first: URI to the first page (mandatory when not the first page).
+    prev: URI to the previous page (mandatory when not the first page).
+    next: URI to the next page (mandatory when not the last page).
+    last: URI to the last page.
+  response_meta: # MetaPaginated
+    totalRecords: Total records in the full set.
+    totalPages: Total pages in the full set.
+  errors: [Field/InvalidPageSize, Field/InvalidPage]
+filtering:
+  listBankingProducts:
+    effective: CURRENT | FUTURE | ALL (default CURRENT)
+    updated-since: only products updated after this DateTimeString.
+    brand: filter by brand name.
+    product-category: filter by BankingProductCategory enum.
+idempotency:
+  supported: false
+  reason: PRD surface is read-only (GET only); no state-changing operations.
+error_envelope:
+  media_type: application/json
+  shape: '{ "errors": [ { "code": "<urn>", "title": "...", "detail": "...", "meta": {} } ] }'
+  see: errors/police-bank-problem-types.yml
+rate_limiting:
+  documented: false
+  note: CDS defines traffic-thresholds for authenticated flows; no public rate-limit signal observed on the unauthenticated PRD endpoint.
+metadata:
+  response_wrapper: 'Every 200 wraps payload as { data, links, meta }.'

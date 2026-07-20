@@ -1,0 +1,28 @@
+# Police Bank
+
+> Police Bank is a mutual, member-owned Australian bank (ABN 95 087 650 799, AFSL / Australian Credit Licence No. 240018) founded to serve the New South Wales police community and now open to the wider public. As an Authorised Deposit-taking Institution it participates in Australia's Consumer Data Right (Open Banking) as a data holder, publishing an unauthenticated Product Reference Data (PRD) API conforming to the Consumer Data Standards.
+
+## APIs
+
+- [Police Bank CDR Product Reference Data API](https://www.policebank.com.au/open-banking): Public, unauthenticated Product Reference Data API required of every Australian ADI under the Consumer Data Right. Serves machine-readable product details (rates, fees, features, eligibility). Base URL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking
+
+## Specs
+
+- [OpenAPI (CDR Banking API)](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/openapi/police-bank-cds-banking-products-openapi.yml): DSB Consumer Data Standards Banking API v1.36.0; Police Bank exposes the products operations.
+- [Agent Skill: look up banking products](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/skills/police-bank-lookup-banking-products.md)
+- [MCP candidate tools](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/mcp/police-bank-mcp.yml)
+- [Error catalog (CDS error codes)](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/errors/police-bank-problem-types.yml)
+- [API conventions](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/conventions/police-bank-conventions.yml)
+- [Data model / ERD](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/data-model/police-bank-data-model.yml)
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/authentication/police-bank-authentication.yml)
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/conformance/police-bank-conformance.yml)
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/lifecycle/police-bank-lifecycle.yml)
+
+## Docs
+
+- [Open Banking / CDR overview](https://www.policebank.com.au/open-banking)
+- [Product APIs Portal](https://product.api.policebank.com.au/)
+- [Consumer Data Standards (Australia)](https://consumerdatastandardsaustralia.github.io/standards/)
+- [Consumer Data Right Policy (PDF)](https://www.policebank.com.au/wp-content/uploads/2024/12/Police-Bank-Consumer-Data-Right-Policy-Effective-December-2024.pdf)
+- [Privacy Policy](https://www.policebank.com.au/privacy-policy)
+- [Contact / Support](https://www.policebank.com.au/contact-us)

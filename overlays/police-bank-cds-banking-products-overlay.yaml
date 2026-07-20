@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Police Bank CDR Product Reference Data API
+  version: 1.0.0
+extends: openapi/police-bank-cds-banking-products-openapi.yml
+# Non-destructive overlay capturing API Evangelist annotations. The harvested
+# OpenAPI is the DSB CDS Banking API standard; Police Bank exposes only the
+# unauthenticated Product Reference Data operations. This overlay records the
+# real production server and our metadata without mutating the original spec.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: Police Bank
+    x-apievangelist-surface: Consumer Data Right - Product Reference Data (unauthenticated)
+    x-apievangelist-exposed-operations: [listBankingProducts, getBankingProductDetail]
+- target: $.servers
+  update:
+    - description: Police Bank CDR Product Reference Data (production, unauthenticated)
+      url: https://public.cdr.prd.policebank.com.au/cds-au/v1
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-status: live
+    x-apievangelist-observed-version: 3
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-status: live
+    x-apievangelist-observed-version: 7

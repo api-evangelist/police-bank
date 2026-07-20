@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/police-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/
+# What cross-cutting / industry standards Police Bank's PRD API conforms to.
+standards:
+- id: cdr-au-banking
+  name: Consumer Data Right (Australia) - Banking sector
+  conforms: true
+  evidence: >-
+    Mandatory Product Reference Data API served at
+    public.cdr.prd.policebank.com.au/cds-au/v1/banking/products (HTTP 200, x-v 3);
+    Police Bank is a registered ADI data holder.
+- id: cds-banking-api
+  name: Data Standards Body Consumer Data Standards - Banking API v1.36.0
+  conforms: true
+  evidence: OpenAPI title "CDR Banking API" v1.36.0; PRD endpoints and schemas match the DSB standard.
+- id: cds-pagination
+  name: CDS page-number pagination (Links/Meta)
+  conforms: true
+  evidence: page/page-size params + LinksPaginated/MetaPaginated response objects.
+- id: cds-versioning
+  name: CDS header-based versioning (x-v / x-min-v)
+  conforms: true
+  evidence: mandatory x-v request header; x-v echoed in response.
+- id: cds-error-handling
+  name: CDS error envelope (ResponseErrorListV2 / urn:au-cds:error)
+  conforms: true
+  evidence: 400/404/406/422 responses use ResponseErrorListV2 with urn:au-cds:error codes.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: Uses the CDS ErrorList envelope, not application/problem+json.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: PRD surface is unauthenticated; no oauth2 securityScheme in the exposed spec.
+- id: fapi
+  name: FAPI 1.0 Advanced (authenticated CDR flows)
+  conforms: not-exposed
+  evidence: CDS mandates FAPI for authenticated data sharing, but Police Bank exposes only the unauthenticated PRD surface publicly.

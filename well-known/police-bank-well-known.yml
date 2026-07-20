@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: probed
+source: live probes of the API + website hosts
+# Probed the standard discovery surface on the PRD API host, the website, and
+# the product API portal. No genuine discovery documents are published: the API
+# host returns 404 for all paths; the website returns empty soft-200s
+# (text/html, zero length) for api-catalog / ai-plugin.json - i.e. no real
+# well-known documents. No files saved (nothing genuine to save).
+hosts:
+- host: https://public.cdr.prd.policebank.com.au
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://www.policebank.com.au
+  documents:
+  - {path: /.well-known/security.txt, status: 302, note: redirect, no security.txt}
+  - {path: /.well-known/openid-configuration, status: 302}
+  - {path: /.well-known/oauth-authorization-server, status: 302}
+  - {path: /.well-known/api-catalog, status: 200, note: empty soft-200 (text/html len 0) - not a genuine catalog}
+  - {path: /.well-known/ai-plugin.json, status: 200, note: empty soft-200 (text/html len 0) - not a genuine document}
+- host: https://product.api.policebank.com.au
+  documents:
+  - {path: /.well-known/security.txt, status: 000, note: connection failed}

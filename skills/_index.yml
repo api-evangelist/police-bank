@@ -1,0 +1,8 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/police-bank-cds-banking-products-openapi.yml
+skills:
+- file: police-bank-lookup-banking-products.md
+  name: Look up Police Bank banking products (CDR PRD)
+  api: openapi/police-bank-cds-banking-products-openapi.yml
+  operations: [listBankingProducts, getBankingProductDetail]

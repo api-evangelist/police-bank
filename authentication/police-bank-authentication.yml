@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/police-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+# Police Bank publicly exposes only the unauthenticated Product Reference Data
+# (PRD) surface of the CDR Banking API. The PRD endpoints (/banking/products,
+# /banking/products/{productId}) require NO authentication - they are open,
+# machine-readable product data as mandated for every Australian ADI under the
+# Consumer Data Right. The OpenAPI declares no securitySchemes for these ops.
+summary:
+  types: []
+  public_unauthenticated: true
+  api_key_in: []
+  oauth2_flows: []
+prd_surface:
+  authenticated: false
+  note: >-
+    No API key, token, or client credential is required to call the Product
+    Reference Data endpoints. A mandatory x-v request header selects the API
+    version but is not an auth credential.
+consumer_data_sharing:
+  # The broader (authenticated) CDR data-sharing flows are governed by the CDS
+  # security profile, not by a Police Bank-proprietary scheme. Police Bank
+  # participates as a data holder; members authenticate via the CDR consent
+  # flow with ACCC-accredited data recipients. These flows are NOT exposed on
+  # Police Bank's public surface.
+  standard: Consumer Data Standards security profile (FAPI 1.0 Advanced)
+  mechanisms: [OAuth2 authorization code + PKCE, OpenID Connect, PAR, MTLS-bound tokens]
+  applies_to: authenticated banking data sharing (accounts, transactions, etc.)
+  exposed_publicly: false
