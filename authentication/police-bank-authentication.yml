@@ -28,3 +28,4 @@ consumer_data_sharing:
   mechanisms: [OAuth2 authorization code + PKCE, OpenID Connect, PAR, MTLS-bound tokens]
   applies_to: authenticated banking data sharing (accounts, transactions, etc.)
   exposed_publicly: false
+  scopes: scopes/police-bank-scopes.yml  # 5 CDR banking scopes carried as x-scopes in the spec

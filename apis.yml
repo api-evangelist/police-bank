@@ -22,7 +22,7 @@ tags:
 - Mutual Bank
 - Product Reference Data
 created: '2026-07-20'
-modified: '2026-07-21'
+modified: '2026-07-21T12:00:00Z'
 specificationVersion: '0.19'
 apis:
 - aid: police-bank:police-bank-cds-banking-products-api
@@ -165,6 +165,8 @@ common:
   url: https://product.api.policebank.com.au/
 - type: Authentication
   url: authentication/police-bank-authentication.yml
+- type: OAuthScopes
+  url: scopes/police-bank-scopes.yml
 - type: ErrorCatalog
   url: errors/police-bank-problem-types.yml
 - type: Conventions

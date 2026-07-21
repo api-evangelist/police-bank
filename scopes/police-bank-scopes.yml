@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/police-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes
+# CDR (Consumer Data Right) banking authorisation scopes required by Police Bank's
+# authenticated CDR Banking operations. Derived from the x-scopes extension attached
+# to each authenticated operation in the OpenAPI (the spec declares no formal
+# securitySchemes block; scopes are carried as x-scopes). These are the standard
+# Consumer Data Standards banking scopes - not Police Bank-proprietary. The public
+# Product Reference Data operations (listBankingProducts / getBankingProductDetail)
+# require NO scope and are unauthenticated.
+schemes:
+- name: CDR-OAuth2
+  type: oauth2
+  source: openapi/police-bank-cds-banking-products-openapi.yml
+  note: >-
+    Consumer Data Right authorisation follows the CDS security profile (FAPI 1.0
+    Advanced): OpenID Connect authorization-code flow with PKCE, PAR, and
+    MTLS-bound tokens. Authorization/token endpoints are per-data-holder and
+    resolved from Police Bank's OIDC discovery document at authorisation time;
+    they are not published on the public PRD surface.
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: null
+    tokenUrl: null
+scopes:
+- scope: bank:accounts.basic:read
+  description: >-
+    Basic account information - the list of a member's accounts plus balances.
+  flows: [authorizationCode]
+  operations: [listBankingAccounts, getBankingBalance, listBankingBalancesBulk, listBankingBalancesSpecificAccounts]
+  sources: [openapi/police-bank-cds-banking-products-openapi.yml]
+- scope: bank:accounts.detail:read
+  description: >-
+    Detailed account information - account numbers, features, fees, rates and
+    other account detail beyond the basic list.
+  flows: [authorizationCode]
+  operations: [getBankingAccountDetail]
+  sources: [openapi/police-bank-cds-banking-products-openapi.yml]
+- scope: bank:transactions:read
+  description: >-
+    Transactions - the ability to read a member's transactions for authorised
+    accounts, including transaction detail.
+  flows: [authorizationCode]
+  operations: [listBankingTransactions, getBankingTransactionDetail]
+  sources: [openapi/police-bank-cds-banking-products-openapi.yml]
+- scope: bank:regular_payments:read
+  description: >-
+    Regular payments - direct debits, scheduled payments and instalment plans
+    configured on a member's accounts.
+  flows: [authorizationCode]
+  operations: [listDirectDebits, listDirectDebitsBulk, listDirectDebitsSpecificAccounts, listScheduledPayments, listScheduledPaymentsBulk, listScheduledPaymentsSpecificAccounts, listInstalmentPlans, listInstalmentPlansBulk]
+  sources: [openapi/police-bank-cds-banking-products-openapi.yml]
+- scope: bank:payees:read
+  description: >-
+    Saved payees - the member's stored domestic, international and BPAY payees.
+  flows: [authorizationCode]
+  operations: [listBankingPayees, getBankingPayeeDetail]
+  sources: [openapi/police-bank-cds-banking-products-openapi.yml]
