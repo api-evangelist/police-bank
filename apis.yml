@@ -22,7 +22,7 @@ tags:
 - Mutual Bank
 - Product Reference Data
 created: '2026-07-20'
-modified: '2026-07-20'
+modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
 - aid: police-bank:police-bank-cds-banking-products-api
@@ -35,7 +35,7 @@ apis:
   - Australia
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.policebank.com.au/open-banking
-  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
   properties:
   - url: https://www.policebank.com.au/open-banking
     type: Documentation
@@ -46,10 +46,108 @@ apis:
   description: Public, unauthenticated Product Reference Data (PRD) API required of every
     Australian ADI under the Consumer Data Right. Serves machine-readable product details
     (rates, fees, features, eligibility) for Police Bank's transaction and savings accounts,
-    term deposits, residential mortgages, personal loans, and credit/charge cards.
-    Confirmed live at https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
-    (HTTP 200, x-v 3, 16 products across 5 categories). Conforms to the DSB Consumer
-    Data Standards Banking API; not a Police Bank-proprietary contract.
+    term deposits, residential mortgages, personal loans, and credit/charge cards via the
+    Get Products and Get Product Detail endpoints. Confirmed live at
+    https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products (HTTP 200, x-v 3,
+    16 products across 5 categories). Conforms to the DSB Consumer Data Standards Banking
+    API (v1.36.0); not a Police Bank-proprietary contract.
+- aid: police-bank:police-bank-cds-banking-accounts-api
+  name: Police Bank CDR Accounts & Balances API
+  tags:
+  - Open Banking
+  - CDR
+  - Accounts
+  - Balances
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.policebank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+    type: APIReference
+  - url: openapi/police-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized CDR Banking endpoints that let a Police Bank member share
+    their account list and balances with an ACCC-accredited data recipient (ADR). Covers Get
+    Accounts, Get Account Detail, Get Bulk Balances, and Get Account Balance. Unlike the public
+    Product Reference Data API, these require the CDR consent + authorization flow and are
+    reached over the accredited data-holder MTLS channel, not anonymously. Standardized by the
+    DSB Consumer Data Standards Banking API (v1.36.0); not a Police Bank-proprietary contract.
+- aid: police-bank:police-bank-cds-banking-transactions-api
+  name: Police Bank CDR Transactions API
+  tags:
+  - Open Banking
+  - CDR
+  - Transactions
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.policebank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+    type: APIReference
+  - url: openapi/police-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized CDR Banking endpoints for retrieving a member's transaction
+    history once they have consented to share data with an ACCC-accredited data recipient.
+    Covers Get Transactions For Account and Get Transaction Detail, supporting date-range and
+    text filtering per the standard. Requires the CDR consent + authorization flow over the
+    data-holder MTLS channel. Standardized by the DSB Consumer Data Standards Banking API
+    (v1.36.0); not a Police Bank-proprietary contract.
+- aid: police-bank:police-bank-cds-banking-direct-debits-scheduled-payments-api
+  name: Police Bank CDR Direct Debits & Scheduled Payments API
+  tags:
+  - Open Banking
+  - CDR
+  - Direct Debits
+  - Scheduled Payments
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.policebank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+    type: APIReference
+  - url: openapi/police-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized CDR Banking endpoints exposing a member's regular payment
+    arrangements to an ACCC-accredited data recipient after consent. Covers Get Direct Debits
+    For Account, Get Bulk Direct Debits, Get Scheduled Payments For Account, Get Scheduled
+    Payments For Specific Accounts, and Get Bulk Scheduled Payments. Requires the CDR consent +
+    authorization flow over the data-holder MTLS channel. Standardized by the DSB Consumer Data
+    Standards Banking API (v1.36.0); not a Police Bank-proprietary contract.
+- aid: police-bank:police-bank-cds-banking-payees-api
+  name: Police Bank CDR Payees API
+  tags:
+  - Open Banking
+  - CDR
+  - Payees
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/payees
+  properties:
+  - url: https://www.policebank.com.au/open-banking
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+    type: APIReference
+  - url: openapi/police-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Consumer-authorized CDR Banking endpoints returning a member's saved payees to an
+    ACCC-accredited data recipient after consent. Covers Get Payees and Get Payee Detail,
+    including domestic, international, and BPAY payee types per the standard. Requires the CDR
+    consent + authorization flow over the data-holder MTLS channel. Standardized by the DSB
+    Consumer Data Standards Banking API (v1.36.0); not a Police Bank-proprietary contract.
 common:
 - type: AgenticAccess
   url: agentic-access/police-bank-agentic-access.yml
