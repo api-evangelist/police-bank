@@ -11,7 +11,19 @@ description: Police Bank is a mutual, member-owned Australian bank (ABN 95 087 6
   members share their banking data with ACCC-accredited data recipients. Police Bank
   states it is in the process of gaining ACCC accreditation to also receive data as an
   Accredited Data Recipient.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/police-bank.png
 tags:
 - Financial
 - Banks
@@ -25,129 +37,167 @@ created: '2026-07-20'
 modified: '2026-07-21T12:00:00Z'
 specificationVersion: '0.19'
 apis:
-- aid: police-bank:police-bank-cds-banking-products-api
-  name: Police Bank CDR Product Reference Data API
-  tags:
-  - Open Banking
-  - CDR
-  - Product Reference Data
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: police-bank:police-bank-banking-account-balances-api
+  name: Police Bank Banking Account Balances API
+  description: Banking Account Balance endpoints
   humanURL: https://www.policebank.com.au/open-banking
   baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
-  properties:
-  - url: https://www.policebank.com.au/open-banking
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
-    type: APIReference
-  - url: openapi/police-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Public, unauthenticated Product Reference Data (PRD) API required of every
-    Australian ADI under the Consumer Data Right. Serves machine-readable product details
-    (rates, fees, features, eligibility) for Police Bank's transaction and savings accounts,
-    term deposits, residential mortgages, personal loans, and credit/charge cards via the
-    Get Products and Get Product Detail endpoints. Confirmed live at
-    https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products (HTTP 200, x-v 3,
-    16 products across 5 categories). Conforms to the DSB Consumer Data Standards Banking
-    API (v1.36.0); not a Police Bank-proprietary contract.
-- aid: police-bank:police-bank-cds-banking-accounts-api
-  name: Police Bank CDR Accounts & Balances API
   tags:
-  - Open Banking
-  - CDR
-  - Accounts
-  - Balances
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.policebank.com.au/open-banking
-  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Balances
   properties:
-  - url: https://www.policebank.com.au/open-banking
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
-    type: APIReference
-  - url: openapi/police-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized CDR Banking endpoints that let a Police Bank member share
-    their account list and balances with an ACCC-accredited data recipient (ADR). Covers Get
-    Accounts, Get Account Detail, Get Bulk Balances, and Get Account Balance. Unlike the public
-    Product Reference Data API, these require the CDR consent + authorization flow and are
-    reached over the accredited data-holder MTLS channel, not anonymously. Standardized by the
-    DSB Consumer Data Standards Banking API (v1.36.0); not a Police Bank-proprietary contract.
-- aid: police-bank:police-bank-cds-banking-transactions-api
-  name: Police Bank CDR Transactions API
+  - type: OpenAPI
+    url: openapi/police-bank-banking-account-balances-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: police-bank:police-bank-banking-account-direct-debits-api
+  name: Police Bank Banking Account Direct Debits API
+  description: Banking Account Direct Debit endpoints
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
   tags:
-  - Open Banking
-  - CDR
-  - Transactions
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.policebank.com.au/open-banking
-  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Direct Debits
   properties:
-  - url: https://www.policebank.com.au/open-banking
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
-    type: APIReference
-  - url: openapi/police-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized CDR Banking endpoints for retrieving a member's transaction
-    history once they have consented to share data with an ACCC-accredited data recipient.
-    Covers Get Transactions For Account and Get Transaction Detail, supporting date-range and
-    text filtering per the standard. Requires the CDR consent + authorization flow over the
-    data-holder MTLS channel. Standardized by the DSB Consumer Data Standards Banking API
-    (v1.36.0); not a Police Bank-proprietary contract.
-- aid: police-bank:police-bank-cds-banking-direct-debits-scheduled-payments-api
-  name: Police Bank CDR Direct Debits & Scheduled Payments API
+  - type: OpenAPI
+    url: openapi/police-bank-banking-account-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: police-bank:police-bank-banking-account-scheduled-payments-api
+  name: Police Bank Banking Account Scheduled Payments API
+  description: Banking Account Scheduled Payment endpoints
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
   tags:
-  - Open Banking
-  - CDR
-  - Direct Debits
-  - Scheduled Payments
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.policebank.com.au/open-banking
-  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Scheduled Payments
   properties:
-  - url: https://www.policebank.com.au/open-banking
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
-    type: APIReference
-  - url: openapi/police-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized CDR Banking endpoints exposing a member's regular payment
-    arrangements to an ACCC-accredited data recipient after consent. Covers Get Direct Debits
-    For Account, Get Bulk Direct Debits, Get Scheduled Payments For Account, Get Scheduled
-    Payments For Specific Accounts, and Get Bulk Scheduled Payments. Requires the CDR consent +
-    authorization flow over the data-holder MTLS channel. Standardized by the DSB Consumer Data
-    Standards Banking API (v1.36.0); not a Police Bank-proprietary contract.
-- aid: police-bank:police-bank-cds-banking-payees-api
-  name: Police Bank CDR Payees API
+  - type: OpenAPI
+    url: openapi/police-bank-banking-account-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: police-bank:police-bank-banking-account-transactions-api
+  name: Police Bank Banking Account Transactions API
+  description: Banking Account Transaction endpoints
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
   tags:
-  - Open Banking
-  - CDR
-  - Payees
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.policebank.com.au/open-banking
-  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/payees
+  - Banking Account Transactions
   properties:
-  - url: https://www.policebank.com.au/open-banking
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
-    type: APIReference
-  - url: openapi/police-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized CDR Banking endpoints returning a member's saved payees to an
-    ACCC-accredited data recipient after consent. Covers Get Payees and Get Payee Detail,
-    including domestic, international, and BPAY payee types per the standard. Requires the CDR
-    consent + authorization flow over the data-holder MTLS channel. Standardized by the DSB
-    Consumer Data Standards Banking API (v1.36.0); not a Police Bank-proprietary contract.
+  - type: OpenAPI
+    url: openapi/police-bank-banking-account-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: police-bank:police-bank-banking-accounts-api
+  name: Police Bank Banking Accounts API
+  description: Banking Account endpoints
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/police-bank-banking-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: police-bank:police-bank-banking-payees-api
+  name: Police Bank Banking Payees API
+  description: Banking Payee endpoints
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Payees
+  properties:
+  - type: OpenAPI
+    url: openapi/police-bank-banking-payees-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: police-bank:police-bank-banking-products-api
+  name: Police Bank Banking Products API
+  description: Banking Product endpoints
+  humanURL: https://www.policebank.com.au/open-banking
+  baseURL: https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Products
+  properties:
+  - type: OpenAPI
+    url: openapi/police-bank-banking-products-api-openapi.yml
+  - type: Documentation
+    url: https://www.policebank.com.au/open-banking
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
 common:
 - type: AgenticAccess
   url: agentic-access/police-bank-agentic-access.yml
