@@ -1,0 +1,26 @@
+{
+  "provider": "police-bank",
+  "sources": [
+    "police-bank-banking-account-balances-api-openapi.yml",
+    "police-bank-banking-account-direct-debits-api-openapi.yml",
+    "police-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "police-bank-banking-account-transactions-api-openapi.yml",
+    "police-bank-banking-accounts-api-openapi.yml",
+    "police-bank-banking-payees-api-openapi.yml",
+    "police-bank-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "police-bank-banking-account-balances-api-openapi.yml",
+    "police-bank-banking-account-direct-debits-api-openapi.yml",
+    "police-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "police-bank-banking-account-transactions-api-openapi.yml",
+    "police-bank-banking-accounts-api-openapi.yml",
+    "police-bank-banking-payees-api-openapi.yml",
+    "police-bank-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
