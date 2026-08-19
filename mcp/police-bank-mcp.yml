@@ -2,9 +2,6 @@ generated: '2026-07-20'
 method: derived
 source: openapi/police-bank-cds-banking-products-openapi.yml
 status: candidate
-# No official Police Bank MCP server exists. This is a DERIVED candidate tool
-# list covering only the publicly-exposed, unauthenticated Product Reference
-# Data operations - the read-only surface an agent can safely call today.
 server:
   name: police-bank-prd
   transport: http
@@ -12,12 +9,22 @@ server:
   auth: none
 tools:
 - name: list_banking_products
-  description: List Police Bank's publicly available banking products (rates, fees, features, eligibility) with optional category/brand/effective filters and CDS pagination.
+  description: List Police Bank's publicly available banking products (rates, fees, features, eligibility)
+    with optional category/brand/effective filters and CDS pagination.
   source_operation: openapi/police-bank-cds-banking-products-openapi.yml#listBankingProducts
   http: GET /cds-au/v1/banking/products
-  required_headers: [x-v]
+  required_headers:
+  - x-v
 - name: get_banking_product_detail
-  description: Retrieve the full detail for a single Police Bank banking product by productId, including fees, deposit/lending rates, constraints and eligibility.
+  description: Retrieve the full detail for a single Police Bank banking product by productId, including
+    fees, deposit/lending rates, constraints and eligibility.
   source_operation: openapi/police-bank-cds-banking-products-openapi.yml#getBankingProductDetail
   http: GET /cds-au/v1/banking/products/{productId}
-  required_headers: [x-v]
+  required_headers:
+  - x-v
+deployment:
+  mode: none
+  verified: derived
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census
