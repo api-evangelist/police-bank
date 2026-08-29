@@ -11,6 +11,17 @@ description: Police Bank is a mutual, member-owned Australian bank (ABN 95 087 6
   members share their banking data with ACCC-accredited data recipients. Police Bank
   states it is in the process of gaining ACCC accreditation to also receive data as an
   Accredited Data Recipient.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
