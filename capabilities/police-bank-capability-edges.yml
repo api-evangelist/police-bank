@@ -1,0 +1,66 @@
+slug: police-bank
+provider: Police Bank
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Banking Products
+  spec_file: police-bank-banking-products-api-openapi.yml
+  capability_id: BC-1310.10
+  capability_id_l1: BC-1310
+  capability_name: Product Catalogue Management
+  confidence: 0.9
+  evidence: GET /banking/products  listBankingProducts  Get Products; schemas BankingProductV6, BankingProductFeeV2,
+    BankingProductDepositRateV2, BankingProductBundle
+  reason: Publishes the bank's product catalogue with rates, fees, features and bundles — plainly Banking
+    Product Catalogue Management.
+- tag: Banking Account Scheduled Payments
+  spec_file: police-bank-banking-account-scheduled-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.75
+  evidence: GET /banking/accounts/{accountId}/payments/scheduled  Get Scheduled Payments for Account;
+    schemas BankingScheduledPaymentV2, BankingScheduledPaymentRecurrenceIntervalSchedule
+  reason: Operations expose scheduled/recurring payment instructions and instalment plans against accounts
+    — payment instruction capture and management under Payments & Card Management.
+- tag: Banking Accounts
+  spec_file: police-bank-banking-accounts-api-openapi.yml
+  capability_id: BC-1330.10
+  capability_id_l1: BC-1330
+  capability_name: Deposit Account Management
+  confidence: 0.75
+  evidence: GET /banking/accounts  listBankingAccounts  Get Accounts; schemas BankingAccountDetailV5,
+    BankingCreditCardAccount
+  reason: Exposes the bank's customer account master (deposit and credit card accounts) with features,
+    fees and rates — deposit account management/servicing data under Open Banking.
+- tag: Banking Account Direct Debits
+  spec_file: police-bank-banking-account-direct-debits-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: GET /banking/accounts/{accountId}/direct-debits  listDirectDebits  Get Direct Debits For Account;
+    schema BankingDirectDebit, BankingAuthorisedEntity
+  reason: CDR Open Banking read API exposing direct debit authorisations on deposit accounts. This is
+    payment instruction/mandate data, best placed under Payments & Card Management (payment initiation/mandates);
+    some ambiguity as it is read-only account servicing data.
+- tag: Banking Payees
+  spec_file: police-bank-banking-payees-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: GET /banking/payees  listBankingPayees; schemas BankingDomesticPayee, BankingInternationalPayee,
+    BankingBillerPayee, BankingDigitalWalletPayee
+  reason: Payee registry used for payment instruction capture (domestic, international, biller, digital
+    wallet payees) — supports payment initiation within the bank's payment capability.

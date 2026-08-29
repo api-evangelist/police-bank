@@ -210,6 +210,9 @@ apis:
   - type: APIReference
     url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
 common:
+- type: CapabilityMap
+  url: capabilities/police-bank-capability-edges.yml
+  name: Police Bank Business Capability Map
 - type: AgenticAccess
   url: agentic-access/police-bank-agentic-access.yml
 - type: DomainSecurity
