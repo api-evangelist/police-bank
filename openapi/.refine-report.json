@@ -1,13 +1,7 @@
 {
   "provider": "police-bank",
   "sources": [
-    "police-bank-banking-account-balances-api-openapi.yml",
-    "police-bank-banking-account-direct-debits-api-openapi.yml",
-    "police-bank-banking-account-scheduled-payments-api-openapi.yml",
-    "police-bank-banking-account-transactions-api-openapi.yml",
-    "police-bank-banking-accounts-api-openapi.yml",
-    "police-bank-banking-payees-api-openapi.yml",
-    "police-bank-banking-products-api-openapi.yml"
+    "_original/police-bank-cds-banking-products-openapi.yml"
   ],
   "outputs": [
     "police-bank-banking-account-balances-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "police-bank-cds-banking-products-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "police-bank-banking-account-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "police-bank-banking-account-direct-debits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "police-bank-banking-account-scheduled-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "police-bank-banking-account-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "police-bank-banking-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "police-bank-banking-payees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "police-bank-banking-products-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
