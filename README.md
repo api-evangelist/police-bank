@@ -1,4 +1,4 @@
-# Police Bank (police-bank)
+# Police Bank
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,64 +64,129 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Police Bank is a mutual, member-owned Australian bank (ABN 95 087 650 799, AFSL / Australian Credit Licence No. 240018) founded to serve the New South Wales police community and their families, now open to the wider public. As an Authorised Deposit-taking Institution it participates in Australia's Consumer Data Right (Open Banking) regime as an active data holder — publishing an unauthenticated Product Reference Data (PRD) API that conforms to the Consumer Data Standards, and letting members share their banking data with ACCC-accredited data recipients.
+Police Bank is a mutual, member-owned Australian bank (ABN 95 087 650 799, ACN 087 650 799, AFSL / Australian Credit Licence No. 240018) founded to serve the New South Wales police community and their families and now open to the wider public. As an Authorised Deposit-taking Institution it participates in Australia's Consumer Data Right (Open Banking) regime as an active data holder - it publishes an unauthenticated Product Reference Data (PRD) API conforming to the Consumer Data Standards, and lets members share their banking data with ACCC-accredited data recipients. Police Bank states it is in the process of gaining ACCC accreditation to also receive data as an Accredited Data Recipient.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/police-bank/refs/heads/main/apis.yml)
+**Areas:** Finance · Banks · Open Banking · CDR · Consumer Banking · Australia · Mutual Bank · Product Reference Data
 
-## Tags
+## Police Bank on APIs.io
 
-- Financial
-- Banks
-- Open Banking
-- CDR
-- Consumer Banking
-- Australia
-- Mutual Bank
-- Product Reference Data
+Everything profiled for Police Bank is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/police-bank/](https://apis.io/providers/police-bank/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-20
-- **Modified:** 2026-07-20
+- [Police Bank Banking Account Balances API](https://apis.io/apis/police-bank/police-bank-banking-account-balances-api/) — Banking Account Balance endpoints
+- [Police Bank Banking Account Direct Debits API](https://apis.io/apis/police-bank/police-bank-banking-account-direct-debits-api/) — Banking Account Direct Debit endpoints
+- [Police Bank Banking Account Scheduled Payments API](https://apis.io/apis/police-bank/police-bank-banking-account-scheduled-payments-api/) — Banking Account Scheduled Payment endpoints
+- [Police Bank Banking Account Transactions API](https://apis.io/apis/police-bank/police-bank-banking-account-transactions-api/) — Banking Account Transaction endpoints
+- [Police Bank Banking Accounts API](https://apis.io/apis/police-bank/police-bank-banking-accounts-api/) — Banking Account endpoints
+- [Police Bank Banking Payees API](https://apis.io/apis/police-bank/police-bank-banking-payees-api/) — Banking Payee endpoints
+- [Police Bank Banking Products API](https://apis.io/apis/police-bank/police-bank-banking-products-api/) — Banking Product endpoints
 
-## APIs
+### Published properties
 
-### Police Bank CDR Product Reference Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public, unauthenticated Product Reference Data (PRD) API required of every Australian ADI under the Consumer Data Right. Serves machine-readable product details (rates, fees, features, eligibility) for Police Bank's transaction and savings accounts, term deposits, residential mortgages, personal loans, and credit/charge cards. Confirmed live (HTTP 200, `x-v: 3`, 16 products across 5 categories).
+#### MCP servers (1)
 
-- **Human URL:** [https://www.policebank.com.au/open-banking](https://www.policebank.com.au/open-banking)
-- **Base URL:** `https://public.cdr.prd.policebank.com.au/cds-au/v1/banking`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [police-bank-prd](https://apis.io/servers/police-bank/police-bank-prd/)
 
-- Open Banking
-- CDR
-- Product Reference Data
-- Banking
-- Australia
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://www.policebank.com.au/open-banking)
-- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/#get-products)
-- [OpenAPI](openapi/police-bank-cds-banking-products-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Police Bank Agentic Access](https://apis.io/agentic-access/police-bank/police-bank-agentic-access/)
 
-## Common Properties
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [CDR Banking Banking Account Balances API](https://apis.io/collections/police-bank/open-police-bank-banking-account-balances-api/)
+- [CDR Banking Banking Account Balances Banking Account Direct Debits API](https://apis.io/collections/police-bank/open-police-bank-banking-account-direct-debits-api/)
+- [CDR Banking Banking Account Balances Banking Account Scheduled Payments API](https://apis.io/collections/police-bank/open-police-bank-banking-account-scheduled-payments-api/)
+- [CDR Banking Banking Account Balances Banking Account Transactions API](https://apis.io/collections/police-bank/open-police-bank-banking-account-transactions-api/)
+- [CDR Banking Banking Account Balances Banking Accounts API](https://apis.io/collections/police-bank/open-police-bank-banking-accounts-api/)
+- [CDR Banking Banking Account Balances Banking Payees API](https://apis.io/collections/police-bank/open-police-bank-banking-payees-api/)
+- [CDR Banking Banking Account Balances Banking Products API](https://apis.io/collections/police-bank/open-police-bank-banking-products-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Police Bank Cds Banking Products Overlay](https://apis.io/overlays/police-bank/police-bank-cds-banking-products-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Police Bank Authentication](https://apis.io/security/police-bank/police-bank-authentication/)
+- [Police Bank Domain Security](https://apis.io/security/police-bank/police-bank-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Police Bank Scopes](https://apis.io/scopes/police-bank/police-bank-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.policebank.com.au/)
 - [Documentation](https://www.policebank.com.au/open-banking)
-- [Privacy Policy](https://www.policebank.com.au/privacy-policy)
 - [Support](https://www.policebank.com.au/contact-us)
+- [Privacy policy](https://www.policebank.com.au/privacy-policy)
 
-## Notes
+## API Evangelist rating
 
-- **CDR PRD confirmed live:** `https://public.cdr.prd.policebank.com.au/cds-au/v1/banking/products` (HTTP 200, `x-v: 3`).
-- **Public base URI source:** CDR Register Get Data Holder Brands Summary API (brandName "Police Bank", ABN 95087650799).
-- **No proprietary developer portal or Up-style personal-banking API** is published; the only public developer surface is the CDR PRD API.
-- **Spec provenance:** the harvested OpenAPI is the shared DSB Consumer Data Standards CDR Banking API (3.0.3, v1.36.0) — the standard the PRD endpoint conforms to, not a Police Bank-proprietary contract.
+**Kin Score 24.4** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 44.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 25.6 |
+| Access clarity | 0.0 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 23.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.8** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/police-bank/](https://apis.io/providers/police-bank/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Police Bank: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/police-bank/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
